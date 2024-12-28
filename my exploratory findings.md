@@ -54,3 +54,16 @@ In particular:
 | 50%              | NaN          | NaN            | 3.000000      | NaN  | 903000.000   | NaN    | NaN     | NaN       | 9.200000     | 3084.000000 | 3.000000     | 1.000000       | 2.000000     | 440.000000   | 126.000000   | 1970.000000| NaN          | -37.802355  | 145.000100   | NaN                   | 6555.000000    |
 | 75%              | NaN          | NaN            | 3.000000      | NaN  | 1330000.000  | NaN    | NaN     | NaN       | 13.000000    | 3148.000000 | 3.000000     | 2.000000       | 2.000000     | 651.000000   | 174.000000   | 1999.000000| NaN          | -37.756400  | 145.058305   | NaN                   | 10331.000000   |
 | max              | NaN          | NaN            | 10.000000     | NaN  | 9000000.000  | NaN    | NaN     | NaN       | 48.100000    | 3977.000000 | 20.000000    | 8.000000       | 10.000000    | 433014.000000| 44515.000000 | 2018.000000| NaN          | -37.408530  | 145.526350   | NaN                   | 21650.000000   |
+
+
+# How to handle missing data
+Possibilities:
+- for numerical columns (**buildingArea**, **Car**): 
+  - firstly, check if the missing data are related to any other characteristic. Perhaps they can be null or 0
+  - otherwise, replace the missing value with the median or avg
+  - or else, do a regression or ML model (maybe knn if quick) using other features to predict the missing values (eg: calculate the missing BuildingArea using Rooms, Landsize, and Type)
+- for string columns (**councilArea**, **regionName**):
+  - use the mode... or add a category 'unknown'
+
+Or else again, for some (a small amount) of rows, we can just drop the entire row.
+
